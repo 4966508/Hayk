@@ -1,0 +1,21 @@
+.letters {
+    margin: 5px;
+    display: inline-block;
+    font-size: 500%;
+    width: 65px;
+    text-align: center;
+    font-family: armenia;
+}
+p{
+    margin: 0px;
+    font-size: 300%;
+    display: inline-block;
+}
+@font-face {
+    font-family: armenia;
+    src: url(ArmBoloragirItalic.ttf);
+}
+.input{
+    font-family: armenia;
+    font-size: 50px;
+}

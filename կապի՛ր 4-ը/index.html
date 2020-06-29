@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <script src="script.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <table>
+        <tr>
+    
+        </tr>
+    </table>
+    <table></table>
+    <script>
+        var mode = prompt('insert mode (comp is computer game, everything else is 2 player game)');
+        var arrowtr = document.getElementsByTagName('tr')[0];
+        for(let c = 1; c <= m; c++){
+            var arrowtd = document.createElement('td');
+            arrowtd.textContent = '↓';
+            arrowtd.id = c;
+            arrowtd.className = 'arrow';
+            arrowtr.appendChild(arrowtd);
+        }
+        var table = document.getElementsByTagName('table')[1];
+        function clear(el) {
+            while (el.firstChild) {
+                el.removeChild(el.firstChild);
+            }
+        }
+        function display(dispmatrix) {
+            clear(table);
+            for (let r in dispmatrix) {
+                var R = document.createElement('tr');
+                R.id = r;
+                for (let d in dispmatrix[r]) {
+                    var D = document.createElement('td');
+                    switch (dispmatrix[r][d]) {
+                        case 1: D.style.backgroundColor = 'red'; break;
+                        case 2: D.style.backgroundColor = 'green'; break;
+                        case 3: D.style.backgroundColor = '#fc03fc'; break;
+                        case 4: D.style.backgroundColor = '#03fca9'; break;
+                    }
+                    D.id = d;
+                    R.appendChild(D);
+                }
+                table.appendChild(R);
+            }
+        }
+        display(matrix);
+        var player = 1;
+        arrowArr = document.getElementsByClassName('arrow');
+        for (let i in arrowArr) {
+            arrowArr[i].onclick = (evt) =>{
+                var vertical = arrowArr[i].id;
+            vertical = Number(vertical);
+            move(vertical, player);
+            player = !(player - 1) + 1;
+            if(mode === "comp"){
+                if(player === 2){
+                    var randvert = Math.floor(m*Math.random());
+                    move(randvert+1, 2);
+                    player = 1;
+                }
+            }
+            
+            }
+        }
+    </script>
+</body>
+
+</html>

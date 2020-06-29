@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <script src="script.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class = "main">
+
+    </div>
+    
+    <br>
+    <p>Սխալներ`</p>
+    <p id = 'mistake'> 0</p>
+    <br>
+    <p>Ներմուծուած տառեր՝ </p>
+    <br>
+    <p id = "inputs"></p>
+    <script>
+        var body = document.getElementsByTagName('body')[0];
+        var maindiv = body.children[0];
+        function displayWord() {
+            for (let lett of Wordletters) {
+                var div = document.createElement('div');
+                div.innerText = "_";
+                div.className = 'letters';
+                divArr.push(div);
+                maindiv.append(div);
+            }
+        }
+        displayWord();
+        document.addEventListener('keydown', keyPressed);
+        var inputted = document.getElementById("inputs");
+        var inputtedplace;
+    </script>
+</body>
+
+</html>

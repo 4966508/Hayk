@@ -1,0 +1,86 @@
+<html>
+    <head>
+    <style>
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+}
+    </style>
+    </head>
+    <body>
+        <script>
+            var arr = [];
+            var colnum = 9;
+            var rownum = 4;
+for(let i = 2;i<=9;i++){
+    for(let j=i;j<=9;j++){arr.push(`${i}*${j}=`/*, `${i*j}:${i}=`*/);if(i!=j)/*arr.push(`${i*j}:${j}=`)*/;
+}}
+function shuffle(arra1) {
+    var ctr = arra1.length, temp, index;
+    while (ctr > 0) {
+        index = Math.floor(Math.random() * ctr);
+        ctr--;
+        temp = arra1[ctr];
+        arra1[ctr] = arra1[index];
+        arra1[index] = temp;
+    }
+    return arra1;
+}
+function doer(x){
+    if(x.charAt(1)=="*"){
+        return x.charAt(0)*x.charAt(2);
+    }
+
+    else if(x.charAt(2)==':') return (10*x.charAt(0)+Number(x.charAt(1)))/x.charAt(3);
+    else return 3;
+}
+shuffle(arr);
+var newp,newd,nta;
+for(let i = 0; i<rownum;i++){
+    newd = document.createElement('div');
+    newd.style.display = 'inline-block';
+    newd.style.width = '100px';
+    newd.style.textAlign = 'left';
+    for(let j = 0; j<colnum;j++){
+newp = document.createElement('p');
+newp.innerText=arr[i*colnum+j];
+newp.style.width="90px";
+nta = document.createElement('input');
+nta.style.width = '40px';
+nta.style.height = '20px';
+nta.style.resize = 'none';
+nta.min = 0;
+nta.max = 100;
+nta.maxLength = 2;
+nta.type = "number";
+nta.id=arr[i*colnum+j];
+nta.oninput = function(){
+    if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);
+}
+newp.append(nta);
+newd.append(newp);}
+document.body.append(newd);
+}
+var button = document.createElement('button');
+button.innerHTML = 'Ուղարկել';
+button.addEventListener('click', check);
+document.body.append(button);
+
+function check(){
+var wrs=0,answ=document.getElementsByTagName('input');
+for(let i = 0; i<arr.length;i++){
+    if(doer(answ[i].id)!=answ[i].value){wrs++;answ[i].style.backgroundColor='red'}
+    else {answ[i].style.backgroundColor='green', answ[i].readOnly=true;}
+    button.removeEventListener('click', check);
+}
+var mark=document.createElement('div'), p2=document.createElement('div'), p1=document.createElement('div');
+p1.innerText = Math.max(0,Math.round(10-wrs/3));
+p1.style.fontSize="100px";
+p2.innerText = `${wrs} սխալ 36-ից`
+mark.append(p1),mark.append(p2);
+document.body.append(mark);
+}
+</script>
+    </body>
+</html>

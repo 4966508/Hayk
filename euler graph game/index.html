@@ -1,0 +1,61 @@
+<html>
+    <head>
+        <script src="script.js"></script>
+        <style>
+            .line{
+                background-color: blue;
+                z-index: -1;
+                position: absolute;
+                height: 2px;
+                transform-origin: bottom left;
+                user-select: none;
+            }
+            .edge{
+                user-select: none;
+                position:absolute;
+                background-color: lightgreen;
+                z-index: -2;
+                position: absolute;
+                height: 2px;
+                transform-origin: bottom left;
+            }
+            .vertex{
+                position:absolute;
+                user-select: none;
+                font-size: 40;
+            }
+        </style>
+        <meta charset="utf8">
+    </head>
+    <body>
+        <script type = "text/javascript">
+            var oldinnertext = [];
+            var experiment = new graph(
+                [
+                    [100,400], [200,40], [350,100], [400,500],[600,50]
+                ],
+                [
+                    [0,1],[0,2],[1,2],[1,3],[2,3],[3,4],[1,4],[0,3]
+                ]
+            );
+            experiment.vertexbuild();
+            experiment.edgebuild();
+            const divs = document.getElementsByTagName("div");
+            var div;
+            
+            function mouseOverEvent(j){
+                return function(evt){
+                    divs[j].innerText = "🟢";
+                }
+            }
+            function mouseOffEvent(j){
+                return function(evt){
+                    divs[j].innerText = oldinnertext[j];
+                }
+            }
+            for(let j = 0; j < divs.length; j++){
+                
+            }
+        </script>
+    </body>
+</html>
