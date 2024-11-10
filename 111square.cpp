@@ -1,3 +1,5 @@
+// Find the square of the number 111...111
+
 #include <iostream>
 #include <iomanip>
 using namespace std;
